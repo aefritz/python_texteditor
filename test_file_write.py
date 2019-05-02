@@ -6,16 +6,26 @@ def create_file():
     with open(filename, "w+") as file_object:
         file_object.write(first_line)
 
-def read_file():
+def read_file(filename):
+    with open(filename) as file_object:
+        lines = file_object.readlines()
+        for line in lines:
+            print(line)
+    useraction = input("Would you like to modify this file? Y/N ")
+    if (useraction == 'Y'):
+        edit_file(filename)
+    else:
+        main()
+
+def edit_file(filename):
     print("To be constructed")
 
-print("Hello, World")
-response = input("Do you want to write a new file? Y/N ")
-if (response == "Y"):
-    create_file()
-elif (response == "N"):
+
+def main():
     print("Here are all the files in this directory")
     files = os.listdir()
     for file in files:
         print(str(files.index(file)) + ") " + file)
-    selection = int(input("Choose a file or enter L to change directories"))
+    selection = int(input("Select a file\nEnter L to change directories\nEnter N to create a new file\nEnter Q to quit "))
+
+main()
