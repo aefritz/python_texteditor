@@ -26,6 +26,19 @@ def main():
     files = os.listdir()
     for file in files:
         print(str(files.index(file)) + ") " + file)
-    selection = int(input("Select a file\nEnter L to change directories\nEnter N to create a new file\nEnter Q to quit "))
-
+    selection = input("Select a file\nEnter L to change directories\nEnter N to create a new file\nEnter Q to quit "))
+    if (type(int(selection)) is int):
+        if (int(selection) >= 0) and (int(selection) <= (len(files) - 1)):
+            read_file(files[int(selection)])
+        else:
+            print('Invalid selection')
+    elif (selection == 'L'):
+        print('Chose L')
+    elif (selection == 'N'):
+        create_file()
+    elif (selection == 'Q'):
+        print('Goodbye')
+    else:
+        print('Invalid input')
+        main()
 main()
