@@ -31,6 +31,10 @@ def edit_file(filename):
                 file_object.write(newline)
     main()
 
+def switch_parent():
+    os.chdir("..")
+    main()
+
 def main():
     print("\nHere are all the files in this directory\n")
     files = os.listdir()
